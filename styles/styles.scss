@@ -17,10 +17,57 @@ $very-dark-blue: hsl(240, 100%, 5%);
   font-family:'Inter-ExtraBold';
   src: url(../assets/fonts/static/Inter-ExtraBold.ttf);
 }
+@keyframes burgerMenu {
+  0%{
+    transform: translateX(200px);
+  }
+  100%{
+    transform: translateX(1);
+  }
+}
 *{
   margin: 0;
   padding: 0;
   font-family: 'Inter-Regular';
+}
+.burger-display{
+  transition: .8s;
+  display: none;
+}
+.hamburger-wrapper{
+  position: absolute;
+  top: .1px;
+  height: 100vh;
+  background: rgb(0, 0, 0, .8);
+  z-index: 1;
+  width: 100vw;
+  .close-btn{
+    position: absolute;
+    right: 1.5em;
+    top: 1.9em;
+    button{
+      border: none;
+      background: none;
+    }
+  }
+  .list{
+    animation: burgerMenu .8s ease;
+    position: absolute;
+    right: 1px;
+    background: $off-white;
+    height: 100vh;
+    width: 75%;
+    ul{
+      padding: 50% 10%;
+      display: flex;
+      flex-direction: column;
+      li{
+        list-style: none;
+        margin-bottom: 2em;
+        color: $very-dark-blue;
+      }
+    }
+  }
 }
 header{
   margin: 30px 20px;
@@ -29,6 +76,9 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .navlist{
+      display: none;
+    }
     a{
       text-decoration: none;
       img{
@@ -42,20 +92,20 @@ header{
   }
 }
 main{
-  margin: 30px 20px;
+  margin: 1.875em 1.25em;
   .section_1{
     display: flex;
     flex-direction: column;
     img{
       width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 1.25em;
     }
     .text-container{
       h1{
         font-family: 'Inter-ExtraBold';
         font-size: 2.5em;
         color: $very-dark-blue;
-        margin-bottom: 20px;
+        margin-bottom: 1.25em;
       }
       .p_button{
         p{
@@ -64,41 +114,41 @@ main{
           color: $dark-grayish-blue;
         }
         button{
-          margin: 20px 0;
-          padding: 15px 35px;
+          margin: 1.25em 0;
+          padding: .938em 2.188em;
           border: none;
           background: $soft-red;
           color: $off-white;
           text-transform: uppercase;
-          letter-spacing: 5px;
+          letter-spacing: .313em;
           font-family: 'Inter-Bold';
         }
       }
     }
   }
   .section_2{
-    margin-top: 50px;
+    margin-top: 3.125em;
     background: $very-dark-blue;
     color: $off-white;
-    padding: 20px;
+    padding: 1.25em;
     .text-wrapper{
       
       h1{
-        font-size: 30px;
-        margin: 10px 0;
+        font-size: 1.875em;
+        margin: .625em 0;
         color: $soft-orange;
         font-family: 'Inter-Bold';
       }
       h2{
         font-family: 'Inter-Bold';
-        font-size: 18px;
-        margin-top: 25px;
+        font-size: 1.125em;
+        margin-top: 1.563em;
       }
       p{
-        font-size: 15px;
+        font-size: .938em;
         color: $grayish-blue;
         line-height: 1.7em;
-        margin: 10px 0 25px 0;
+        margin: .625em 0 1.563em 0;
       }
     }
     .border-middle{
@@ -106,36 +156,131 @@ main{
       border-bottom: 1px solid $dark-grayish-blue;
     }
   }
-  .section_3{
-    margin-top: 50px;
-    .topic{
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      align-items: center;
-      margin-bottom: 40px;
-      img{
-        width: 80%;
+}
+.section_3{
+  margin: 15% 1.25em;
+  .topic{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    align-items: center;
+    margin-bottom: 2.5em;
+    img{
+      width: 80%;
+    }
+    .text-wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h1{
+        color: $grayish-blue;
+        font-size: 2em;
+        font-family: 'Inter-Bold';
       }
-      .text-wrapper{
+      h2{
+        margin: 15px 0;
+        font-family: 'Inter-Bold';
+        color: $very-dark-blue;
+        font-size: 1em;
+      }
+      p{
+        font-size: .92em;
+        line-height: 1.5em;
+        color: $dark-grayish-blue;
+      }
+    }
+  }
+}
+
+@media (min-width: 90em) {
+  header{
+    margin: 5% 10%;
+    nav{ 
+      a{
+        width: 8%;
+      }
+      .navlist{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        h1{
-          color: $grayish-blue;
-          font-size: 2em;
-          font-family: 'Inter-Bold';
-        }
-        h2{
-          margin: 15px 0;
-          font-family: 'Inter-Bold';
-          color: $very-dark-blue;
-          font-size: 1em;
-        }
-        p{
-          font-size: 14px;
-          line-height: 1.5em;
+        li{
+          list-style: none;
+          margin-left: 3em;
           color: $dark-grayish-blue;
         }
+        li:hover{
+          transition: color .3s;
+          color: $soft-red;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .burger-btn{
+    display: none;
+  }
+  main{
+    margin: 5% 10%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 2em;
+    .section_1{
+      .text-container{
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        column-gap: 4em;
+        h1{
+          font-size: 3.1em;
+        }
+        .p_button{
+          padding: 0 1.25em 1em 1.25em;
+          button{
+            padding: 1.2em 2.5em;
+          }
+          button:hover{
+            transition: .8s;
+            background: $very-dark-blue;
+            cursor: pointer;
+          }
+          p{
+            font-size: .983em;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+    .section_2{
+      margin: 0;
+      height: 85%;
+      .text-wrapper{
+        padding: 0 2%;
+        h1{
+          margin-top: 2dvh;
+          font-size: 3em;
+          font-family: 'Inter-Regular';
+        }
+        h2{
+          font-size: 1.3em;
+        }
+        h2:hover{
+          color: $soft-orange;
+          cursor: pointer;
+          transition: .3s;
+        }
+      }
+    }
+  }
+  .section_3{
+    margin: 5% 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3em;
+    img{
+      object-fit: fill;
+      height: 90%;
+    }
+    .topic{
+      h2:hover{
+        transition: .3s;
+        color: $soft-red;
+        cursor: pointer;
       }
     }
   }
